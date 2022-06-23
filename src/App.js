@@ -6,7 +6,7 @@ import { handleInitialData } from "./actions/shared";
 
 import "./App.css";
 import { LoginPage } from "./pages/LoginPage";
-import { DashboardPage } from "./pages/DashboardPage";
+import DashboardPage from "./pages/DashboardPage";
 
 const App = ({ dispatch }) => {
   useEffect(() => {
@@ -23,4 +23,8 @@ const App = ({ dispatch }) => {
   );
 };
 
-export default connect()(App);
+const mapStateToProps = ({ authedUser }) => ({
+  loading: authedUser === null,
+});
+
+export default connect(mapStateToProps)(App);
