@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { connect } from "react-redux";
+
+import { handleInitialData } from "./actions/shared";
 
 import "./App.css";
 import { LoginPage } from "./pages/LoginPage";
 import { DashboardPage } from "./pages/DashboardPage";
 
-function App() {
+const App = ({ dispatch }) => {
+  useEffect(() => {
+    dispatch(handleInitialData());
+  }, []);
+
   return (
     <div className="App">
       <Routes>
@@ -14,6 +21,6 @@ function App() {
       </Routes>
     </div>
   );
-}
+};
 
-export default App;
+export default connect()(App);
