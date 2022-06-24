@@ -1,7 +1,15 @@
 import React from "react";
-import { Avatar, Box, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Container,
+  CssBaseline,
+  Grid,
+  Typography,
+} from "@mui/material";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
+import { Question } from "../components/Question";
 
 const PollPage = ({ authedUser, polls, users }) => {
   const { id } = useParams();
@@ -15,7 +23,7 @@ const PollPage = ({ authedUser, polls, users }) => {
   console.log("POLL", poll);
 
   return (
-    <>
+    <Container component="main" sx={{ padding: 8 }}>
       <Box
         sx={{
           marginTop: 2,
@@ -47,9 +55,20 @@ const PollPage = ({ authedUser, polls, users }) => {
         >
           WOULD YOU RATHER
         </Typography>
+
+        <Box sx={{ marginTop: 4, flexGrow: 1 }}>
+          <Grid container spacing={4}>
+            <Grid key={poll?.optionOne?.text} item xs>
+              <Question question={poll?.optionOne?.text} />
+            </Grid>
+            <Grid key={poll?.optionTwo?.text} item xs>
+              <Question question={poll?.optionTwo?.text} />
+            </Grid>
+          </Grid>
+        </Box>
       </Box>
       <br />
-    </>
+    </Container>
   );
 };
 
