@@ -18,14 +18,29 @@ export const formatPoll = (poll, authedUser) => {
   return null;
 };
 
-export const getNewQuestions = (polls, authedUser, users) => {
-  return {
-    id: "id",
-  };
+export const getAnsweredQuestionsIds = (polls, authedUser) => {
+  const answeredQuestionsIds = [];
+  Object.entries(polls)?.map((poll) => {
+    if (
+      poll[1].optionOne.votes.includes(authedUser) ||
+      poll[1].optionTwo.votes.includes(authedUser)
+    ) {
+      answeredQuestionsIds.push(poll[0]);
+    }
+  });
+
+  return [...answeredQuestionsIds];
 };
 
-export const getAnsweredQuestions = (polls, authedUser, users) => {
-  return {
-    id: "id",
-  };
+export const getNewQuestionsIds = (polls, authedUser) => {
+  const newQuestionsIds = [];
+  Object.entries(polls)?.map((poll) => {
+    if (
+      !poll[1].optionOne.votes.includes(authedUser) &&
+      !poll[1].optionTwo.votes.includes(authedUser)
+    ) {
+      newQuestionsIds.push(poll[0]);
+    }
+  });
+  return [...newQuestionsIds];
 };

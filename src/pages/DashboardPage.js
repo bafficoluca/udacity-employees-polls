@@ -4,10 +4,13 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import Poll from "../components/Poll";
-import { getAnsweredQuestions, getNewQuestions } from "../utils/helpers";
+import { getAnsweredQuestionsIds, getNewQuestionsIds } from "../utils/helpers";
 
 const DashboardPage = (props) => {
-  console.log("POLLS", props.pollsIds);
+  console.log("POLLS IDS", props?.polls);
+  console.log("AUTHED USER", props?.authedUser);
+  console.log("NEW", props?.newQuestionsIds);
+  console.log("DONE", props?.answeredQuestionsIds);
   return (
     <>
       <Container component="main" sx={{ padding: 8 }}>
@@ -17,9 +20,9 @@ const DashboardPage = (props) => {
         <CssBaseline />
         <Box sx={{ marginTop: 4, flexGrow: 1 }}>
           <Grid container spacing={3}>
-            {props.pollsIds?.map((pollId) => {
+            {props?.newQuestionsIds?.map((pollId) => {
               return (
-                <Grid item xs>
+                <Grid key={pollId} item xs>
                   <Poll id={pollId} />
                 </Grid>
               );
@@ -34,15 +37,13 @@ const DashboardPage = (props) => {
         <CssBaseline />
         <Box sx={{ marginTop: 4, flexGrow: 1 }}>
           <Grid container spacing={3}>
-            <Grid item xs>
-              <Poll />
-            </Grid>
-            <Grid item xs>
-              <Poll />
-            </Grid>
-            <Grid item xs>
-              <Poll />
-            </Grid>
+            {props?.answeredQuestionsIds?.map((pollId) => {
+              return (
+                <Grid key={pollId} item xs>
+                  <Poll id={pollId} />
+                </Grid>
+              );
+            })}
           </Grid>
         </Box>
       </Container>
@@ -52,12 +53,13 @@ const DashboardPage = (props) => {
 
 const mapStateToProps = ({ polls, authedUser, users }) => {
   return {
+    authedUser,
     pollsIds: Object.keys(polls).sort(
       (a, b) => polls[b].timestamp - polls[a].timestamp
     ),
     polls,
-    newQuestions: getNewQuestions(polls, authedUser, users),
-    done: getAnsweredQuestions(polls, authedUser, users),
+    newQuestionsIds: getNewQuestionsIds(polls, authedUser),
+    answeredQuestionsIds: getAnsweredQuestionsIds(polls, authedUser),
   };
 };
 

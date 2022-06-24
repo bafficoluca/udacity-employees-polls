@@ -8,7 +8,7 @@ import "./App.css";
 import { LoginPage } from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 
-const App = ({ dispatch }) => {
+const App = ({ dispatch, authedUser }) => {
   useEffect(() => {
     dispatch(handleInitialData());
   }, []);
