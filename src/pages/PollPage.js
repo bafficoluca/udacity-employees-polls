@@ -1,26 +1,13 @@
 import React from "react";
-import {
-  Avatar,
-  Box,
-  Container,
-  CssBaseline,
-  Grid,
-  Typography,
-} from "@mui/material";
+import { Avatar, Box, Container, Grid, Typography } from "@mui/material";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Question } from "../components/Question";
 
-const PollPage = ({ authedUser, polls, users }) => {
+const PollPage = ({ polls, users }) => {
   const { id } = useParams();
   const poll = polls[id];
   const author = users[poll?.author];
-
-  console.log("ID", id);
-  console.log("POLLS", polls);
-  console.log("AUTHOR", author);
-  console.log("AVATAR", author?.avatarURL);
-  console.log("POLL", poll);
 
   return (
     <Container component="main" sx={{ padding: 8 }}>
@@ -72,9 +59,8 @@ const PollPage = ({ authedUser, polls, users }) => {
   );
 };
 
-const mapStateToProps = ({ authedUser, polls, users }) => {
+const mapStateToProps = ({ polls, users }) => {
   return {
-    authedUser,
     users,
     polls,
   };
