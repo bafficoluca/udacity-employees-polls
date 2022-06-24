@@ -7,21 +7,34 @@ import {
   CardContent,
   Typography,
 } from "@mui/material";
-import { formatPoll } from "../utils/helpers";
+import { Link } from "react-router-dom";
+
+import { formatPoll, formatDate } from "../utils/helpers";
 
 const Poll = (props) => {
+  // console.log("SELECTED POLL", props?.poll);
+  // console.log("USERS", props?.users);
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          USER NAME
+          {`${props?.poll?.author}`.toUpperCase()}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          TIMESTAMP
+          {`${formatDate(props?.poll?.timestamp)}`.toUpperCase()}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="big">SHOW</Button>
+        <Button
+          component={Link}
+          to={`/poll-page/${props?.poll?.id}`}
+          variant="outlined"
+          size="large"
+          fullWidth={true}
+        >
+          SHOW
+        </Button>
       </CardActions>
     </Card>
   );
@@ -32,7 +45,8 @@ const mapStateToProps = ({ authedUser, polls, users }, { id }) => {
 
   return {
     authedUser,
-    poll: formatPoll(poll, authedUser),
+    users,
+    poll: formatPoll(poll, authedUser, users),
   };
 };
 

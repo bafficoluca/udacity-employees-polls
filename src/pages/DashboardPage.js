@@ -7,10 +7,9 @@ import Poll from "../components/Poll";
 import { getAnsweredQuestionsIds, getNewQuestionsIds } from "../utils/helpers";
 
 const DashboardPage = (props) => {
-  console.log("POLLS IDS", props?.polls);
-  console.log("AUTHED USER", props?.authedUser);
-  console.log("NEW", props?.newQuestionsIds);
-  console.log("DONE", props?.answeredQuestionsIds);
+  console.log("POLLS", props?.polls);
+  // console.log("NEW", props?.newQuestionsIds);
+  // console.log("DONE", props?.answeredQuestionsIds);
   return (
     <>
       <Container component="main" sx={{ padding: 8 }}>

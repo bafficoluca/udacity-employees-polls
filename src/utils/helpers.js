@@ -1,13 +1,12 @@
-export const formatPoll = (poll, authedUser) => {
+export const formatPoll = (poll, authedUser, users) => {
   if (poll && authedUser) {
     const { id, author, timestamp, optionOne, optionTwo } = poll;
-    const { name, avatarURL } = author;
 
     return {
       id,
-      authorName: name,
+      author,
+      authorAvatar: users[author]?.avatarURL,
       timestamp,
-      authorAvatar: avatarURL,
       optionOne,
       optionTwo,
       alreadyAnswered:
@@ -44,3 +43,9 @@ export const getNewQuestionsIds = (polls, authedUser) => {
   });
   return [...newQuestionsIds];
 };
+
+export function formatDate(timestamp) {
+  const d = new Date(timestamp);
+  const time = d.toLocaleTimeString("en-US");
+  return time.substr(0, 5) + time.slice(-2) + " | " + d.toLocaleDateString();
+}

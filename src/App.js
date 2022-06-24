@@ -6,6 +6,7 @@ import { handleInitialData } from "./actions/shared";
 
 import "./App.css";
 import { LoginPage } from "./pages/LoginPage";
+import PollPage from "./pages/PollPage";
 import DashboardPage from "./pages/DashboardPage";
 
 const App = ({ dispatch, authedUser }) => {
@@ -18,6 +19,7 @@ const App = ({ dispatch, authedUser }) => {
       <Routes>
         <Route path="/" exact element={<DashboardPage />}></Route>
         <Route path="/login-page" element={<LoginPage />}></Route>
+        <Route path="/poll-page/:id" exact element={<PollPage />}></Route>
       </Routes>
     </div>
   );
