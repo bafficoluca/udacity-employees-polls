@@ -6,7 +6,7 @@ import { LoadingBar } from "react-redux-loading-bar";
 import { handleInitialData } from "./actions/shared";
 
 import "./App.css";
-import { LoginPage } from "./pages/LoginPage";
+import LoginPage from "./pages/LoginPage";
 import PollPage from "./pages/PollPage";
 import DashboardPage from "./pages/DashboardPage";
 
@@ -29,8 +29,8 @@ const App = ({ dispatch, loading, authedUser }) => {
   );
 };
 
-const mapStateToProps = ({ authedUser }) => ({
-  loading: authedUser === null,
+const mapStateToProps = ({ authedUser, polls }) => ({
+  loading: polls === null,
 });
 
 export default connect(mapStateToProps)(App);

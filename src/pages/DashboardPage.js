@@ -1,6 +1,7 @@
 import { Box, Container, CssBaseline, Grid, Typography } from "@mui/material";
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import Poll from "../components/Poll";
 import { getAnsweredQuestionsIds, getNewQuestionsIds } from "../utils/helpers";
@@ -44,6 +45,7 @@ const DashboardPage = (props) => {
             })}
           </Grid>
         </Box>
+        <Link to="/login-page">GO TO LOGIN</Link>
       </Container>
     </>
   );
