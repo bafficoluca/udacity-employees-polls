@@ -12,7 +12,7 @@ const DashboardPage = ({
   newQuestionsIds,
   answeredQuestionsIds,
 }) => {
-  console.log("POLLS", polls);
+  // console.log("POLLS", polls);
   // console.log("NEW", props?.newQuestionsIds);
   // console.log("DONE", props?.answeredQuestionsIds);
   return (

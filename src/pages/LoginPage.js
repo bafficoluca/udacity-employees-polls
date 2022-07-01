@@ -16,7 +16,6 @@ import { Link } from "react-router-dom";
 const theme = createTheme();
 
 const LoginPage = ({ authedUser, users, dispatch }) => {
-  console.log("USER", authedUser);
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
