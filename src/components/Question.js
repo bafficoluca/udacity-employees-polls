@@ -7,15 +7,29 @@ import {
 } from "@mui/material";
 import React from "react";
 
-export const Question = ({ question }) => {
+export const Question = ({
+  questionId,
+  answer,
+  answerText,
+  handleVoteForPoll,
+}) => {
+  const onClick = () => {
+    handleVoteForPoll(questionId, answer);
+  };
+
   return (
     <Card sx={{ width: 450, height: 150, margin: 4 }}>
       <CardContent>
         <Typography gutterBottom variant="body2" component="div">
-          {`${question}`.toUpperCase()}
+          {`${answerText}`.toUpperCase()}
         </Typography>
         <CardActions>
-          <Button variant="outlined" size="large" fullWidth={true}>
+          <Button
+            variant="outlined"
+            size="large"
+            fullWidth={true}
+            onClick={onClick}
+          >
             VOTE
           </Button>
         </CardActions>

@@ -4,10 +4,17 @@ import { connect } from "react-redux";
 import { useParams, Navigate } from "react-router-dom";
 import { Question } from "../components/Question";
 
-const PollPage = ({ polls, users, authedUser }) => {
+import { voteForPoll } from "../actions/shared";
+
+const PollPage = ({ polls, users, authedUser, dispatch }) => {
   const { id } = useParams();
   const poll = polls[id];
   const author = users[poll?.author];
+
+  const handleVoteForPoll = (questionId, answer) => {
+    console.log("VOTE", `${questionId}: ${answer}`);
+    dispatch(voteForPoll(authedUser, questionId, answer));
+  };
 
   return (
     <>
@@ -48,10 +55,20 @@ const PollPage = ({ polls, users, authedUser }) => {
             <Box sx={{ marginTop: 4, flexGrow: 1 }}>
               <Grid container spacing={4}>
                 <Grid key={poll?.optionOne?.text} item xs>
-                  <Question question={poll?.optionOne?.text} />
+                  <Question
+                    questionId={poll?.id}
+                    answer="optionOne"
+                    answerText={poll?.optionOne?.text}
+                    handleVoteForPoll={handleVoteForPoll}
+                  />
                 </Grid>
                 <Grid key={poll?.optionTwo?.text} item xs>
-                  <Question question={poll?.optionTwo?.text} />
+                  <Question
+                    questionId={poll?.id}
+                    answer="optionTwo"
+                    answerText={poll?.optionTwo?.text}
+                    handleVoteForPoll={handleVoteForPoll}
+                  />
                 </Grid>
               </Grid>
             </Box>
