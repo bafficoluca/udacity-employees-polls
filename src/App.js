@@ -20,9 +20,9 @@ const App = ({ dispatch, loading, authedUser }) => {
       <LoadingBar />
       {!loading && (
         <Routes>
-          <Route path="/" exact element={<DashboardPage />}></Route>
-          <Route path="/login-page" element={<LoginPage />}></Route>
-          <Route path="/poll-page/:id" exact element={<PollPage />}></Route>
+          <Route path="/" exact element={<DashboardPage />} />
+          <Route path="/login-page" element={<LoginPage />} />
+          <Route path="/poll-page/:id" exact element={<PollPage />} />
         </Routes>
       )}
     </div>
