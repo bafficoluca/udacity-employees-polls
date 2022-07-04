@@ -1,12 +1,14 @@
 import React from "react";
 import { Avatar, Box, Container, Grid, Typography } from "@mui/material";
 import { connect } from "react-redux";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, Navigate, useNavigate } from "react-router-dom";
 import { Question } from "../components/Question";
 
 import { voteForPoll } from "../actions/shared";
 
 const PollPage = ({ polls, users, authedUser, dispatch }) => {
+  const navigate = useNavigate();
+
   const { question_id } = useParams();
   const poll = polls[question_id];
   const author = users[poll?.author];
@@ -22,6 +24,7 @@ const PollPage = ({ polls, users, authedUser, dispatch }) => {
 
   const handleVoteForPoll = (questionId, answer) => {
     dispatch(voteForPoll(authedUser, questionId, answer));
+    navigate("/");
   };
 
   return (

@@ -18,7 +18,7 @@ export const addAnswerToQuestion = (authedUser, questionId, answer) => {
   };
 };
 
-export const createNewQuestion = (question) => {
+export const saveNewQuestion = (question) => {
   return {
     type: CREATE_NEW_QUESTION,
     question,

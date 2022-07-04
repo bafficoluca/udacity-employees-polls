@@ -9,9 +9,7 @@ import {
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
-import { createNewQuestion } from "../actions/polls";
-import { addQuestionToUser } from "../actions/users";
-import { saveQuestion } from "../utils/api";
+import { createNewQuestion } from "../actions/shared";
 
 const PollCreationPage = ({ authedUser, dispatch }) => {
   const navigate = useNavigate();
@@ -20,15 +18,17 @@ const PollCreationPage = ({ authedUser, dispatch }) => {
   const [optionTwoText, setOptionTwoText] = useState("");
 
   const handleSubmit = () => {
-    saveQuestion({
-      author: authedUser,
-      optionOneText: optionOneText,
-      optionTwoText: optionTwoText,
-    }).then((newQuestion) => {
-      dispatch(createNewQuestion(newQuestion));
-      dispatch(addQuestionToUser(authedUser, newQuestion));
-      navigate("/");
-    });
+    dispatch(
+      createNewQuestion(
+        {
+          author: authedUser,
+          optionOneText: optionOneText,
+          optionTwoText: optionTwoText,
+        },
+        authedUser
+      )
+    );
+    navigate("/");
   };
 
   return (

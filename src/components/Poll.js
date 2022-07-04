@@ -11,21 +11,21 @@ import { Link } from "react-router-dom";
 
 import { formatPoll, formatDate } from "../utils/helpers";
 
-const Poll = (props) => {
+const Poll = ({ poll }) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {`${props?.poll?.author}`.toUpperCase()}
+          {`${poll?.author}`.toUpperCase()}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {`${formatDate(props?.poll?.timestamp)}`.toUpperCase()}
+          {`${formatDate(poll?.timestamp)}`.toUpperCase()}
         </Typography>
       </CardContent>
       <CardActions>
         <Button
           component={Link}
-          to={`/questions/${props?.poll?.id}`}
+          to={`/questions/${poll?.id}`}
           variant="outlined"
           size="large"
           fullWidth={true}

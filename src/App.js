@@ -17,7 +17,7 @@ import LeaderboardPage from "./pages/LeaderboardPage";
 const App = ({ dispatch, loading, authedUser, users }) => {
   useEffect(() => {
     dispatch(handleInitialData());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App">

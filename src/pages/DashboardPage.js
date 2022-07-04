@@ -1,13 +1,12 @@
 import { Box, Container, CssBaseline, Grid, Typography } from "@mui/material";
 import React from "react";
 import { connect } from "react-redux";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 import Poll from "../components/Poll";
 import { getAnsweredQuestionsIds, getNewQuestionsIds } from "../utils/helpers";
 
 const DashboardPage = ({
-  polls,
   authedUser,
   newQuestionsIds,
   answeredQuestionsIds,
@@ -58,13 +57,12 @@ const DashboardPage = ({
   );
 };
 
-const mapStateToProps = ({ polls, authedUser, users }) => {
+const mapStateToProps = ({ polls, authedUser }) => {
   return {
     authedUser,
     pollsIds: Object.keys(polls).sort(
       (a, b) => polls[b].timestamp - polls[a].timestamp
     ),
-    polls,
     newQuestionsIds: getNewQuestionsIds(polls, authedUser),
     answeredQuestionsIds: getAnsweredQuestionsIds(polls, authedUser),
   };
