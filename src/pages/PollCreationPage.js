@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
 import { createNewQuestion } from "../actions/polls";
+import { addQuestionToUser } from "../actions/users";
 import { saveQuestion } from "../utils/api";
 
 const PollCreationPage = ({ authedUser, dispatch }) => {
@@ -25,6 +26,7 @@ const PollCreationPage = ({ authedUser, dispatch }) => {
       optionTwoText: optionTwoText,
     }).then((newQuestion) => {
       dispatch(createNewQuestion(newQuestion));
+      dispatch(addQuestionToUser(authedUser, newQuestion));
       navigate("/");
     });
   };

@@ -38,7 +38,6 @@ const Poll = (props) => {
 };
 
 const mapStateToProps = ({ authedUser, polls, users }, { id }) => {
-  console.log("question_id", id);
   const poll = polls[id];
 
   return {
