@@ -7,7 +7,7 @@ import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import AdbIcon from "@mui/icons-material/Adb";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const pages = [
   { label: "Home", path: "/" },
@@ -16,6 +16,11 @@ const pages = [
 ];
 
 const ResponsiveAppBar = ({ userAvatar, logout }) => {
+  const navigate = useNavigate();
+
+  const gotToPage = (pagePath) => {
+    navigate(pagePath);
+  };
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -43,19 +48,10 @@ const ResponsiveAppBar = ({ userAvatar, logout }) => {
             {pages.map((page) => (
               <Button
                 key={page.label}
-                // onClick={handleCloseNavMenu}
+                onClick={() => gotToPage(page.path)}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                <Link
-                  to={page.path}
-                  style={{
-                    color: "white",
-                    display: "block",
-                    textDecoration: "none",
-                  }}
-                >
-                  {page.label}
-                </Link>
+                {page.label}
               </Button>
             ))}
           </Box>
