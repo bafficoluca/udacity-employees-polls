@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { connect } from "react-redux";
-import { LoadingBar } from "react-redux-loading-bar";
 
 import { handleInitialData } from "./actions/shared";
 import { setAuthedUser } from "./actions/authedUser";
@@ -25,7 +24,6 @@ const App = ({ dispatch, loading, authedUser, users }) => {
         userAvatar={users[authedUser]?.avatarURL}
         logout={() => dispatch(setAuthedUser(null))}
       />
-      <LoadingBar />
       {!loading && (
         <Routes>
           <Route path="/" exact element={<DashboardPage />} />
