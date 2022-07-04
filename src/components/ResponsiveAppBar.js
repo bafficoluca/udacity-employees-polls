@@ -12,8 +12,13 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import { Link } from "react-router-dom";
 
-const pages = ["Products", "Pricing", "Blog"];
+const pages = [
+  { label: "Home", path: "/" },
+  { label: "Leaderboard", path: "/leaderboard-page" },
+  { label: "New", path: "/poll-creation-page" },
+];
 
 const ResponsiveAppBar = ({ userAvatar, logout }) => {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -70,8 +75,8 @@ const ResponsiveAppBar = ({ userAvatar, logout }) => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.label} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page.label}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -98,11 +103,20 @@ const ResponsiveAppBar = ({ userAvatar, logout }) => {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={page.label}
+                // onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page}
+                <Link
+                  to={page.path}
+                  style={{
+                    color: "white",
+                    display: "block",
+                    textDecoration: "none",
+                  }}
+                >
+                  {page.label}
+                </Link>
               </Button>
             ))}
           </Box>
