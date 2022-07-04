@@ -11,15 +11,13 @@ import LoginPage from "./pages/LoginPage";
 import PollPage from "./pages/PollPage";
 import DashboardPage from "./pages/DashboardPage";
 import ResponsiveAppBar from "./components/ResponsiveAppBar";
-import { PollCreationPage } from "./pages/PollCreationPage";
+import PollCreationPage from "./pages/PollCreationPage";
 import { LeaderboardPage } from "./pages/LeaderboardPage";
 
 const App = ({ dispatch, loading, authedUser, users }) => {
   useEffect(() => {
     dispatch(handleInitialData());
   }, []);
-
-  console.log("USER", users[authedUser]);
 
   return (
     <div className="App">

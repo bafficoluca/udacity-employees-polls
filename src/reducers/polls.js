@@ -1,4 +1,8 @@
-import { RECEIVE_POLLS, ADD_ANSWER_TO_QUESTION } from "../actions/polls";
+import {
+  RECEIVE_POLLS,
+  ADD_ANSWER_TO_QUESTION,
+  CREATE_NEW_QUESTION,
+} from "../actions/polls";
 
 export default function polls(state = {}, action) {
   switch (action.type) {
@@ -21,6 +25,14 @@ export default function polls(state = {}, action) {
             ],
           },
         },
+      };
+
+    case CREATE_NEW_QUESTION:
+      const { question } = action;
+
+      return {
+        ...state,
+        [question.id]: { ...question },
       };
     default:
       return state;

@@ -39,8 +39,6 @@ const ResponsiveAppBar = ({ userAvatar, logout }) => {
     setAnchorElUser(null);
   };
 
-  console.log("AVATAR", userAvatar);
-
   return (
     <AppBar position="static">
       <Container maxWidth="xl">

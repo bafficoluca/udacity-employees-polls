@@ -12,7 +12,6 @@ const PollPage = ({ polls, users, authedUser, dispatch }) => {
   const author = users[poll?.author];
 
   const handleVoteForPoll = (questionId, answer) => {
-    console.log("VOTE", `${questionId}: ${answer}`);
     dispatch(voteForPoll(authedUser, questionId, answer));
   };
 
