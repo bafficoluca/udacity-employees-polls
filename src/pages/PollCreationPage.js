@@ -8,11 +8,13 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { createNewQuestion } from "../actions/polls";
 import { saveQuestion } from "../utils/api";
 
 const PollCreationPage = ({ authedUser, dispatch }) => {
+  const navigate = useNavigate();
+
   const [optionOneText, setOptionOneText] = useState("");
   const [optionTwoText, setOptionTwoText] = useState("");
 
@@ -23,8 +25,7 @@ const PollCreationPage = ({ authedUser, dispatch }) => {
       optionTwoText: optionTwoText,
     }).then((newQuestion) => {
       dispatch(createNewQuestion(newQuestion));
-      setOptionOneText("");
-      setOptionTwoText("");
+      navigate("/");
     });
   };
 

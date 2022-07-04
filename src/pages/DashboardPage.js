@@ -12,9 +12,6 @@ const DashboardPage = ({
   newQuestionsIds,
   answeredQuestionsIds,
 }) => {
-  // console.log("POLLS", polls);
-  // console.log("NEW", props?.newQuestionsIds);
-  // console.log("DONE", props?.answeredQuestionsIds);
   return (
     <>
       {authedUser ? (
@@ -52,7 +49,6 @@ const DashboardPage = ({
                 })}
               </Grid>
             </Box>
-            <Link to="/login-page">GO TO LOGIN</Link>
           </Container>
         </>
       ) : (

@@ -15,9 +15,7 @@ export const UsersSelect = ({ dispatch, users, authedUser }) => {
 
   const handleChange = (event) => {
     dispatch(setAuthedUser(event.target.value));
-    setTimeout(() => {
-      navigate("/");
-    }, 2000);
+    navigate("/");
   };
 
   return (

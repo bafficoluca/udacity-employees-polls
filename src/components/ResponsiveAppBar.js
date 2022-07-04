@@ -16,8 +16,8 @@ import { Link } from "react-router-dom";
 
 const pages = [
   { label: "Home", path: "/" },
-  { label: "Leaderboard", path: "/leaderboard-page" },
-  { label: "New", path: "/poll-creation-page" },
+  { label: "Leaderboard", path: "/leaderboard" },
+  { label: "New", path: "/add" },
 ];
 
 const ResponsiveAppBar = ({ userAvatar, logout }) => {
@@ -144,4 +144,5 @@ const ResponsiveAppBar = ({ userAvatar, logout }) => {
     </AppBar>
   );
 };
+
 export default ResponsiveAppBar;

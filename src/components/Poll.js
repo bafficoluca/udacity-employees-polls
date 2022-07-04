@@ -12,9 +12,6 @@ import { Link } from "react-router-dom";
 import { formatPoll, formatDate } from "../utils/helpers";
 
 const Poll = (props) => {
-  // console.log("SELECTED POLL", props?.poll);
-  // console.log("USERS", props?.users);
-
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardContent>
@@ -28,7 +25,7 @@ const Poll = (props) => {
       <CardActions>
         <Button
           component={Link}
-          to={`/poll-page/${props?.poll?.id}`}
+          to={`/questions/${props?.poll?.id}`}
           variant="outlined"
           size="large"
           fullWidth={true}
@@ -41,6 +38,7 @@ const Poll = (props) => {
 };
 
 const mapStateToProps = ({ authedUser, polls, users }, { id }) => {
+  console.log("question_id", id);
   const poll = polls[id];
 
   return {

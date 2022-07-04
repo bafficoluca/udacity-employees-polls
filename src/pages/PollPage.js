@@ -7,9 +7,18 @@ import { Question } from "../components/Question";
 import { voteForPoll } from "../actions/shared";
 
 const PollPage = ({ polls, users, authedUser, dispatch }) => {
-  const { id } = useParams();
-  const poll = polls[id];
+  const { question_id } = useParams();
+  const poll = polls[question_id];
   const author = users[poll?.author];
+
+  // const userAnswers = Object.keys(users[authedUser]?.answers);
+
+  // const isAlreadyAnswered =
+  //   poll?.optionOne?.votes.some((r) =>
+  //     users[authedUser]?.answers.includes(r)
+  //   ) || poll?.optionTwo?.votes.some((r) => userAnswers.includes(r));
+
+  // console.log("ALREADY ANSWERED", isAlreadyAnswered);
 
   const handleVoteForPoll = (questionId, answer) => {
     dispatch(voteForPoll(authedUser, questionId, answer));

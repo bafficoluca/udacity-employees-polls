@@ -33,7 +33,7 @@ const LoginPage = ({ authedUser, users, dispatch }) => {
             src={people}
             sx={{ width: 384, height: 384 }}
           />
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h3" sx={{ marginTop: 2 }}>
             Log in
           </Typography>
           <UsersSelect
@@ -52,7 +52,6 @@ const LoginPage = ({ authedUser, users, dispatch }) => {
             Flat Icons
           </MaterialLink>
         </Typography>
-        {authedUser && <Link to="/">GO TO DASHBOARD</Link>}
       </Container>
     </ThemeProvider>
   );
