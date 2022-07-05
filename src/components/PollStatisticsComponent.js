@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Box, Card, CardContent, Container, Typography } from "@mui/material";
 import { ResponsiveContainer, PieChart, Pie, Tooltip, Cell } from "recharts";
 
-const COLOR_ONE = "#FF6600";
-const COLOR_TWO = "#00C49F";
+const COLOR_ONE = "#0099ff";
+const COLOR_TWO = "#ffbf00";
+const CARD_COLOR = "#f2f2f2";
 
 const PollStatisticsComponent = ({ poll }) => {
   const [pollData, setPollData] = useState([]);
@@ -67,7 +68,7 @@ const PollStatisticsComponent = ({ poll }) => {
               alignItems: "center",
             }}
           >
-            <Card sx={{ margin: 4, padding: 2 }}>
+            <Card sx={{ margin: 4, padding: 2, backgroundColor: CARD_COLOR }}>
               <CardContent>
                 <Typography
                   component="h1"
@@ -108,7 +109,7 @@ const PollStatisticsComponent = ({ poll }) => {
                 </Box>
               </CardContent>
             </Card>
-            <Card sx={{ margin: 4, padding: 2 }}>
+            <Card sx={{ margin: 4, padding: 2, backgroundColor: CARD_COLOR }}>
               <CardContent>
                 <Typography
                   component="h1"
