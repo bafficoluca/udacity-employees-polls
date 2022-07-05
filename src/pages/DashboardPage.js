@@ -1,4 +1,4 @@
-import { Box, Container, CssBaseline, Grid, Typography } from "@mui/material";
+import { Container, CssBaseline, Grid, Typography } from "@mui/material";
 import React from "react";
 import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
