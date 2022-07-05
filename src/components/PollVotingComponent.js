@@ -9,10 +9,9 @@ const PollVotingComponent = ({ polls, users, handleVoteForPoll }) => {
   const author = users[poll?.author];
 
   return (
-    <Container component="main" sx={{ padding: 8 }}>
+    <Container component="main" sx={{ padding: 2 }}>
       <Box
         sx={{
-          marginTop: 2,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -30,7 +29,7 @@ const PollVotingComponent = ({ polls, users, handleVoteForPoll }) => {
         <Avatar
           alt="User Avatar"
           src={`${process.env.PUBLIC_URL}${author?.avatarURL}`}
-          sx={{ marginTop: 8, width: 384, height: 384 }}
+          sx={{ marginTop: 4, width: 280, height: 280 }}
         />
         <Typography
           component="h1"

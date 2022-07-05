@@ -13,7 +13,7 @@ import { formatPoll, formatDate } from "../utils/helpers";
 
 const Poll = ({ poll }) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, backgroundColor: "#3399ff" }}>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {`${poll?.author}`.toUpperCase()}
@@ -29,6 +29,7 @@ const Poll = ({ poll }) => {
           variant="outlined"
           size="large"
           fullWidth={true}
+          sx={{ color: "#000000", backgroundColor: "#ffd11a" }}
         >
           SHOW
         </Button>

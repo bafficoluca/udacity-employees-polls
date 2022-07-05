@@ -15,39 +15,42 @@ const DashboardPage = ({
     <>
       {authedUser ? (
         <>
-          <Container component="main" sx={{ padding: 8 }}>
-            <Typography component="h1" variant="h5">
+          <Container component="main" sx={{ padding: 2 }}>
+            <Typography component="h1" variant="h3">
               NEW QUESTIONS
             </Typography>
             <CssBaseline />
-            <Box sx={{ marginTop: 4, flexGrow: 1 }}>
-              <Grid container spacing={3}>
-                {newQuestionsIds?.map((pollId) => {
-                  return (
-                    <Grid key={pollId} item xs>
-                      <Poll id={pollId} />
-                    </Grid>
-                  );
-                })}
-              </Grid>
-            </Box>
+            <Grid sx={{ display: "flex", marginTop: 4 }} container spacing={3}>
+              {newQuestionsIds?.map((pollId) => {
+                return (
+                  <Grid key={pollId} item xs={4}>
+                    <Poll id={pollId} />
+                  </Grid>
+                );
+              })}
+            </Grid>
           </Container>
-          <Container component="main" sx={{ marginTop: 2, padding: 8 }}>
-            <Typography component="h1" variant="h5">
+          <Container component="main" sx={{ marginTop: 2, padding: 2 }}>
+            <Typography component="h1" variant="h3">
               DONE
             </Typography>
             <CssBaseline />
-            <Box sx={{ marginTop: 4, flexGrow: 1 }}>
-              <Grid container spacing={3}>
-                {answeredQuestionsIds?.map((pollId) => {
-                  return (
-                    <Grid key={pollId} item xs>
-                      <Poll id={pollId} />
-                    </Grid>
-                  );
-                })}
-              </Grid>
-            </Box>
+            <Grid
+              sx={{ marginTop: 4 }}
+              container
+              direction="row"
+              alignItems="center"
+              justifyContent="center"
+              spacing={2}
+            >
+              {answeredQuestionsIds?.map((pollId) => {
+                return (
+                  <Grid key={pollId} item xs={4}>
+                    <Poll id={pollId} />
+                  </Grid>
+                );
+              })}
+            </Grid>
           </Container>
         </>
       ) : (
