@@ -24,7 +24,7 @@ const DashboardPage = ({
               {newQuestionsIds?.map((pollId) => {
                 return (
                   <Grid key={pollId} item xs={4}>
-                    <Poll id={pollId} />
+                    <Poll id={pollId} dataTestId="new-question" />
                   </Grid>
                 );
               })}
@@ -46,7 +46,7 @@ const DashboardPage = ({
               {answeredQuestionsIds?.map((pollId) => {
                 return (
                   <Grid key={pollId} item xs={4}>
-                    <Poll id={pollId} />
+                    <Poll id={pollId} dataTestId="answered-question" />
                   </Grid>
                 );
               })}

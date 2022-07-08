@@ -40,6 +40,7 @@ Object {
               </label>
               <div
                 class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-16bttv3-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+                data-testid="users-select"
               >
                 <div
                   aria-expanded="false"
@@ -140,6 +141,7 @@ Object {
             </label>
             <div
               class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl  css-16bttv3-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+              data-testid="users-select"
             >
               <div
                 aria-expanded="false"

@@ -37,6 +37,7 @@ const LoginPage = ({ authedUser, users, dispatch }) => {
           </Typography>
           <UsersSelect
             users={users}
+            role="select"
             dispatch={dispatch}
             authedUser={authedUser}
           />

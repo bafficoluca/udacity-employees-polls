@@ -23,6 +23,7 @@ export const UsersSelect = ({ dispatch, users, authedUser }) => {
       <FormControl fullWidth>
         <InputLabel id="users-select-label">Log in as...</InputLabel>
         <Select
+          data-testid="users-select"
           labelId="users-select-label"
           id="users-select"
           value={authedUser ?? ""}
@@ -31,8 +32,12 @@ export const UsersSelect = ({ dispatch, users, authedUser }) => {
           sx={{ width: 400 }}
         >
           {Object.entries(users)?.map((user) => (
-            <MenuItem key={user[1]?.id} value={user[1]?.id}>
-              {user[1]?.id}
+            <MenuItem
+              key={user[1]?.id}
+              value={user[1]?.id}
+              data-testid={user[1]?.name}
+            >
+              {user[1]?.name}
             </MenuItem>
           ))}
         </Select>

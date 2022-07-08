@@ -11,11 +11,16 @@ import { Link } from "react-router-dom";
 
 import { formatPoll, formatDate } from "../utils/helpers";
 
-const Poll = ({ poll }) => {
+const Poll = ({ poll, dataTestId }) => {
   return (
     <Card sx={{ maxWidth: 345, backgroundColor: "#3399ff" }}>
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="div"
+          data-testid={dataTestId}
+        >
           {`${poll?.author}`.toUpperCase()}
         </Typography>
         <Typography variant="body2" color="text.secondary">
