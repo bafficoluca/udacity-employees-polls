@@ -10,12 +10,16 @@ import Select from "@mui/material/Select";
 
 import { setAuthedUser } from "../actions/authedUser";
 
-export const UsersSelect = ({ dispatch, users, authedUser }) => {
+export const UsersSelect = ({ dispatch, users, authedUser, questionId }) => {
   const navigate = useNavigate();
 
   const handleChange = (event) => {
     dispatch(setAuthedUser(event.target.value));
-    navigate("/");
+    if (questionId) {
+      navigate(`/questions/:${questionId}`);
+    } else {
+      navigate("/");
+    }
   };
 
   return (

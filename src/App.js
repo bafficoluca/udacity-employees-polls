@@ -12,6 +12,7 @@ import DashboardPage from "./pages/DashboardPage";
 import ResponsiveAppBar from "./components/ResponsiveAppBar";
 import PollCreationPage from "./pages/PollCreationPage";
 import LeaderboardPage from "./pages/LeaderboardPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const App = ({ dispatch, loading, authedUser, users }) => {
   useEffect(() => {
@@ -26,11 +27,12 @@ const App = ({ dispatch, loading, authedUser, users }) => {
       />
       {!loading && (
         <Routes>
-          <Route path="/" exact element={<DashboardPage />} />
-          <Route path="/login-page" element={<LoginPage />} />
-          <Route path="/questions/:question_id" exact element={<PollPage />} />
-          <Route path="/add" exact element={<PollCreationPage />} />
-          <Route path="/leaderboard" exact element={<LeaderboardPage />} />
+          <Route exact path="/" element={<DashboardPage />} />
+          <Route exact path="/login-page" element={<LoginPage />} />
+          <Route exact path="/questions/:question_id" element={<PollPage />} />
+          <Route exact path="/add" element={<PollCreationPage />} />
+          <Route exact path="/leaderboard" element={<LeaderboardPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       )}
     </div>

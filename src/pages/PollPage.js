@@ -26,18 +26,28 @@ const PollPage = ({ polls, users, authedUser, dispatch }) => {
     <>
       {authedUser ? (
         <>
-          {isAlreadyAnswered ? (
-            <PollStatisticsComponent author={author} poll={poll} />
+          {!poll ? (
+            <Navigate to="/not-found-page" />
           ) : (
-            <PollVotingComponent
-              users={users}
-              polls={polls}
-              handleVoteForPoll={handleVoteForPoll}
-            />
+            <>
+              {isAlreadyAnswered ? (
+                <PollStatisticsComponent author={author} poll={poll} />
+              ) : (
+                <PollVotingComponent
+                  users={users}
+                  polls={polls}
+                  handleVoteForPoll={handleVoteForPoll}
+                />
+              )}
+            </>
           )}
         </>
       ) : (
-        <Navigate to="/login-page" />
+        <Navigate
+          to="/login-page"
+          state={{ questionId: question_id }}
+          replace
+        />
       )}
     </>
   );
