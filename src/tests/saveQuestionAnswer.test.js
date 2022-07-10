@@ -1,4 +1,4 @@
-import { _saveQuestionAnswer } from "./_DATA";
+import { _saveQuestionAnswer } from "../utils/_DATA";
 
 describe("_saveQuestionAnswer", () => {
   it("will return true if the question gets correctly updated with a new anser", async () => {

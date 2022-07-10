@@ -1,5 +1,5 @@
 import React from "react";
-import { screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { createStore } from "redux";
 
 import { renderWithProviders } from "../utils/test-utils";
@@ -10,7 +10,8 @@ import reducer from "../reducers";
 import middleware from "../middleware";
 
 import { loggedInInitialState } from "../utils/test-utils";
-import DashboardPage from "./DashboardPage";
+import DashboardPage from "../pages/DashboardPage";
+import App from "../App";
 
 describe("DashboardPage", () => {
   const store = createStore(reducer, loggedInInitialState, middleware);
@@ -32,5 +33,24 @@ describe("DashboardPage", () => {
       "MTSAMIS"
     );
     expect(screen.getAllByTestId("answered-question")).toHaveLength(1);
+  });
+
+  it("should correctly logout when pressing the logout button", () => {
+    render(
+      <Provider store={store}>
+        <MemoryRouter initialEntries={["/"]}>
+          <App />
+        </MemoryRouter>
+      </Provider>
+    );
+
+    const logoutButton = screen.getByText("LOGOUT");
+    const userNameLabel = screen.getByTestId("user-name-label");
+
+    expect(userNameLabel).toHaveTextContent("TYLER MCGINNIS");
+
+    fireEvent.click(logoutButton);
+
+    expect(userNameLabel).not.toBeInTheDocument();
   });
 });

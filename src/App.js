@@ -22,7 +22,7 @@ const App = ({ dispatch, loading, authedUser, users }) => {
   return (
     <div className="App">
       <ResponsiveAppBar
-        userAvatar={users[authedUser]?.avatarURL}
+        user={users[authedUser]}
         logout={() => dispatch(setAuthedUser(null))}
       />
       {!loading && (

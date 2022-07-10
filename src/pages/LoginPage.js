@@ -51,7 +51,7 @@ const LoginPage = ({ authedUser, users, dispatch }) => {
           {"'People' icon attribution:' "}
           <MaterialLink
             color="inherit"
-            href="https://www.flaticon.com/free-icons/people"
+            href="https://www.flaticon.com/premium-icon/people_1921935?term=people&page=1&position=13&page=1&position=13&related_id=1921935&origin=tag#"
             target="_blank"
           >
             Flat Icons

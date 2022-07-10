@@ -42,7 +42,11 @@ const LeaderboardTable = ({ users }) => {
               key={row.name}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
+              <TableCell
+                component="th"
+                scope="row"
+                data-testid="user-name-cell"
+              >
                 {row.name}
               </TableCell>
               <TableCell align="right">{row.answered}</TableCell>

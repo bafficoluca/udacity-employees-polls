@@ -1,5 +1,5 @@
 import React from "react";
-import { screen, fireEvent, within } from "@testing-library/react";
+import { screen, fireEvent, within, render } from "@testing-library/react";
 import { createStore } from "redux";
 
 import { renderWithProviders } from "../utils/test-utils";
@@ -9,7 +9,7 @@ import { Provider } from "react-redux";
 import reducer from "../reducers";
 import middleware from "../middleware";
 
-import LoginPage from "./LoginPage";
+import LoginPage from "../pages/LoginPage";
 import { notLoggedInInitialState } from "../utils/test-utils";
 
 describe("LoginPage", () => {
@@ -25,7 +25,7 @@ describe("LoginPage", () => {
   });
 
   it("should show the expected users in the UsersSelect component", () => {
-    renderWithProviders(
+    render(
       <Provider store={store}>
         <MemoryRouter initialEntries={["/login-page"]}>
           <LoginPage />

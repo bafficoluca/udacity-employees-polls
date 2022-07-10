@@ -15,7 +15,7 @@ const pages = [
   { label: "New", path: "/add" },
 ];
 
-const ResponsiveAppBar = ({ userAvatar, logout }) => {
+const ResponsiveAppBar = ({ user, logout }) => {
   const navigate = useNavigate();
 
   const gotToPage = (pagePath) => {
@@ -26,24 +26,6 @@ const ResponsiveAppBar = ({ userAvatar, logout }) => {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
@@ -55,13 +37,15 @@ const ResponsiveAppBar = ({ userAvatar, logout }) => {
               </Button>
             ))}
           </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Avatar
-              alt="Remy Sharp"
-              src={`${process.env.PUBLIC_URL}${userAvatar}`}
-            />
-          </Box>
+          {user?.name && (
+            <Typography sx={{ marginRight: 2 }} data-testid="user-name-label">
+              {user?.name.toUpperCase()}
+            </Typography>
+          )}
+          <Avatar
+            alt="Remy Sharp"
+            src={`${process.env.PUBLIC_URL}${user?.avatarURL}`}
+          />
           <Box
             sx={{
               flexGrow: 0,
@@ -72,6 +56,7 @@ const ResponsiveAppBar = ({ userAvatar, logout }) => {
             <Button
               onClick={logout}
               sx={{ my: 2, color: "white", display: "block" }}
+              data-testid="logout-button"
             >
               LOGOUT
             </Button>

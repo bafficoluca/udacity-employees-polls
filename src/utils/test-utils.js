@@ -164,6 +164,17 @@ export const loggedInInitialState = {
       },
       questions: ["6ni6ok3ym7mf1p33lnez", "xj352vofupe1dqz9emx13r"],
     },
+    tylermcginnis: {
+      id: "tylermcginnis",
+      password: "abc321",
+      name: "Tyler McGinnis",
+      avatarURL: "/tylermcginnis.png",
+      answers: {
+        vthrdm985a262al8qx3do: "optionOne",
+        xj352vofupe1dqz9emx13r: "optionTwo",
+      },
+      questions: ["loxhs1bqm25b708cmbf3g", "vthrdm985a262al8qx3do"],
+    },
   },
   authedUser: "tylermcginnis",
   polls: {
