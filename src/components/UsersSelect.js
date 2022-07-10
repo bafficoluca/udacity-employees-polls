@@ -16,7 +16,7 @@ export const UsersSelect = ({ dispatch, users, authedUser, questionId }) => {
   const handleChange = (event) => {
     dispatch(setAuthedUser(event.target.value));
     if (questionId) {
-      navigate(`/questions/:${questionId}`);
+      navigate(`/questions/${questionId}`);
     } else {
       navigate("/");
     }
