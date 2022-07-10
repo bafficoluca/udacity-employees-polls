@@ -43,9 +43,7 @@ const Poll = ({ poll, dataTestId }) => {
   );
 };
 
-const mapStateToProps = ({ authedUser, polls, users }, { id }) => {
-  const poll = polls[id];
-
+const mapStateToProps = ({ authedUser, users }, { poll }) => {
   return {
     authedUser,
     users,

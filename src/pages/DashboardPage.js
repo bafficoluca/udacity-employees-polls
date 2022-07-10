@@ -4,13 +4,9 @@ import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 import Poll from "../components/Poll";
-import { getAnsweredQuestionsIds, getNewQuestionsIds } from "../utils/helpers";
+import { getAnsweredQuestions, getNewQuestions } from "../utils/helpers";
 
-const DashboardPage = ({
-  authedUser,
-  newQuestionsIds,
-  answeredQuestionsIds,
-}) => {
+const DashboardPage = ({ authedUser, newQuestions, answeredQuestionsIds }) => {
   return (
     <>
       {authedUser ? (
@@ -21,10 +17,10 @@ const DashboardPage = ({
             </Typography>
             <CssBaseline />
             <Grid sx={{ display: "flex", marginTop: 4 }} container spacing={3}>
-              {newQuestionsIds?.map((pollId) => {
+              {newQuestions?.map((poll) => {
                 return (
-                  <Grid key={pollId} item xs={4}>
-                    <Poll id={pollId} dataTestId="new-question" />
+                  <Grid key={poll?.id} item xs={4}>
+                    <Poll poll={poll} dataTestId="new-question" />
                   </Grid>
                 );
               })}
@@ -43,10 +39,10 @@ const DashboardPage = ({
               justifyContent="center"
               spacing={2}
             >
-              {answeredQuestionsIds?.map((pollId) => {
+              {answeredQuestionsIds?.map((poll) => {
                 return (
-                  <Grid key={pollId} item xs={4}>
-                    <Poll id={pollId} dataTestId="answered-question" />
+                  <Grid key={poll?.id} item xs={4}>
+                    <Poll poll={poll} dataTestId="answered-question" />
                   </Grid>
                 );
               })}
@@ -66,8 +62,8 @@ const mapStateToProps = ({ polls, authedUser }) => {
     pollsIds: Object.keys(polls).sort(
       (a, b) => polls[b].timestamp - polls[a].timestamp
     ),
-    newQuestionsIds: getNewQuestionsIds(polls, authedUser),
-    answeredQuestionsIds: getAnsweredQuestionsIds(polls, authedUser),
+    newQuestions: getNewQuestions(polls, authedUser),
+    answeredQuestionsIds: getAnsweredQuestions(polls, authedUser),
   };
 };
 

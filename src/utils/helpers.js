@@ -17,31 +17,37 @@ export const formatPoll = (poll, authedUser, users) => {
   return null;
 };
 
-export const getAnsweredQuestionsIds = (polls, authedUser) => {
-  const answeredQuestionsIds = [];
+export const getAnsweredQuestions = (polls, authedUser) => {
+  const answeredQuestions = [];
   Object.entries(polls)?.map((poll) => {
     if (
       poll[1].optionOne.votes.includes(authedUser) ||
       poll[1].optionTwo.votes.includes(authedUser)
     ) {
-      answeredQuestionsIds.push(poll[0]);
+      answeredQuestions.push(poll[1]);
     }
+    answeredQuestions.sort((a, b) => {
+      return b.timestamp - a.timestamp;
+    });
   });
 
-  return [...answeredQuestionsIds];
+  return [...answeredQuestions];
 };
 
-export const getNewQuestionsIds = (polls, authedUser) => {
-  const newQuestionsIds = [];
+export const getNewQuestions = (polls, authedUser) => {
+  const newQuestions = [];
   Object.entries(polls)?.map((poll) => {
     if (
       !poll[1].optionOne.votes.includes(authedUser) &&
       !poll[1].optionTwo.votes.includes(authedUser)
     ) {
-      newQuestionsIds.push(poll[0]);
+      newQuestions.push(poll[1]);
     }
+    newQuestions.sort((a, b) => {
+      return b.timestamp - a.timestamp;
+    });
   });
-  return [...newQuestionsIds];
+  return [...newQuestions];
 };
 
 export function formatDate(timestamp) {
