@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
@@ -10,16 +10,13 @@ import Select from "@mui/material/Select";
 
 import { setAuthedUser } from "../actions/authedUser";
 
-export const UsersSelect = ({ dispatch, users, authedUser, questionId }) => {
+export const UsersSelect = ({ dispatch, users, authedUser }) => {
   const navigate = useNavigate();
+  const { state } = useLocation();
 
   const handleChange = (event) => {
     dispatch(setAuthedUser(event.target.value));
-    if (questionId) {
-      navigate(`/questions/${questionId}`);
-    } else {
-      navigate("/");
-    }
+    navigate(state?.path || "/");
   };
 
   return (

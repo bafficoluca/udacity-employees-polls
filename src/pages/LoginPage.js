@@ -2,7 +2,6 @@ import React from "react";
 
 import { connect } from "react-redux";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useLocation } from "react-router-dom";
 
 import Avatar from "@mui/material/Avatar";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -16,9 +15,6 @@ import { UsersSelect } from "../components/UsersSelect";
 const theme = createTheme();
 
 const LoginPage = ({ authedUser, users, dispatch }) => {
-  const location = useLocation();
-  const questionId = location.state?.questionId;
-
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -44,7 +40,6 @@ const LoginPage = ({ authedUser, users, dispatch }) => {
             role="select"
             dispatch={dispatch}
             authedUser={authedUser}
-            questionId={questionId}
           />
         </Box>
         <Typography variant="body2" color="text.secondary" align="center">
