@@ -19,7 +19,7 @@ const PollPage = ({ polls, users, authedUser, dispatch }) => {
 
   const handleVoteForPoll = (questionId, answer) => {
     dispatch(voteForPoll(authedUser, questionId, answer));
-    navigate("/");
+    navigate(`/questions/${questionId}`);
   };
 
   return (
